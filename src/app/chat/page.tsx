@@ -1,11 +1,13 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Spline from "@splinetool/react-spline";
+import { Toaster, toast} from "react-hot-toast";
 
 export default function Chat() {
     const [message, setMessage] = useState("");
 
     const spline = useRef();
+
 
     function onLoad(splineApp: any) {
         // save the app in a ref for later use
@@ -34,6 +36,9 @@ export default function Chat() {
     const handleSendMessage = async () => {
         // Add your logic to send the message
         console.log("Sending message:", message);
+        toast("The response might take 5-6 seconds.", {
+            duration: 6000, // Display toast for 6 seconds
+        });
         // Clear the message input after sending
         setMessage("");
         triggerAnimation2();
@@ -95,6 +100,7 @@ export default function Chat() {
 
     return (
         <div className="h-screen flex flex-col">
+            <div><Toaster /></div>
             {/* Spline scene */}
             <div className="justify-center h-3/4 w-full flex mb-3">
                 <div className="w-4/5 h-full flex justify-center items-center bg-black">
