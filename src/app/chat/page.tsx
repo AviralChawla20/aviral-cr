@@ -1,10 +1,26 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function Chat() {
     const [message, setMessage] = useState('');
 
+    const spline = useRef();
+
+    function onLoad(splineApp: any) {
+        // save the app in a ref for later use
+        spline.current = splineApp;
+    }
+    function triggerAnimation() {
+        spline.current.emitEvent("keyUp", "Aviral");
+    }
+
+    function triggerAnimation2() {
+        spline.current.emitEvent("keyDown", "Aviral");
+    }
+    function triggerAnimation3() {
+        spline.current.emitEvent("keyDown", "Aviral");
+    }
     const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setMessage(event.target.value);
     };
@@ -14,7 +30,7 @@ export default function Chat() {
         console.log('Sending message:', message);
         // Clear the message input after sending
         setMessage('');
-
+        triggerAnimation2();
         // Construct the form data
         const characterResponsePayload = new FormData();
         characterResponsePayload.append('userText', message);
@@ -45,6 +61,10 @@ export default function Chat() {
                 const audio = new Audio(URL.createObjectURL(audioBlob));
                 // Play audio
                 audio.play();
+                triggerAnimation();
+                setTimeout(() => {
+                    triggerAnimation3();
+                }, 10000);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -69,7 +89,9 @@ export default function Chat() {
             {/* Spline scene */}
             <div className='justify-center flex mb-3'>
                 <div className="w-4/5 h-full flex justify-center items-center bg-black">
-                    <Spline scene="https://prod.spline.design/yRqFaY2i1AkuTRS0/scene.splinecode" />
+                    <Spline scene="https://prod.spline.design/IZ-V9IBRVzCWqCR0/scene.splinecode"
+                        onLoad={onLoad}
+                    />
                 </div>
             </div>
 
