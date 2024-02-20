@@ -34,7 +34,7 @@ export default function Page() {
         <div className="flex flex-col items-center">
           <Link href="/chat">
             <button className="w-40 font-semibold h-10 btn border mb-2">
-              Chat
+              Chat with Me
             </button>
           </Link>
           <Link href="mailto:ac724@snu.edu.in">

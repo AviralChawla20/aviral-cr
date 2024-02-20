@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Spline from "@splinetool/react-spline";
-import { Toaster, toast} from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Chat() {
     const [message, setMessage] = useState("");
@@ -47,11 +47,11 @@ export default function Chat() {
         characterResponsePayload.append("userText", message);
         characterResponsePayload.append(
             "charID",
-            "1b872d18-cf30-11ee-962b-42010a40000f"
+            "47679f72-cfbb-11ee-a290-42010a40000f"
         ); // Your character ID
         characterResponsePayload.append(
             "sessionID",
-            "a414850ab1cdcbee1e62440bde337ae8"
+            "-1"
         );
         characterResponsePayload.append("voiceResponse", "True");
 
@@ -63,7 +63,7 @@ export default function Chat() {
             const response = await fetch(characterResponseUrl, {
                 method: "POST",
                 headers: {
-                    "CONVAI-API-KEY": "b099f390cc31069c047e743cf9f1f908", // Your API key
+                    "CONVAI-API-KEY": "c1e746cb3782b24cc075464e201ccd76", // Your API key
                 },
                 body: characterResponsePayload,
             });
